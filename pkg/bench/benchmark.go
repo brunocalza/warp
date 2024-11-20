@@ -157,7 +157,7 @@ func (c *Common) createEmptyBucket(ctx context.Context) error {
 	if !x {
 		console.Eraseline()
 		console.Infof("\rCreating Bucket %q...", c.Bucket)
-		err := cl.MakeBucket(ctx, c.Bucket, minio.MakeBucketOptions{
+		err := cl.MakeBucket(ctx, strings.Split(c.Bucket, ".")[1], minio.MakeBucketOptions{
 			Region:        c.Location,
 			ObjectLocking: c.Locking,
 		})
